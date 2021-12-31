@@ -21,7 +21,8 @@ from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 print('Keras image data format: {}'.format(K.image_data_format()))
 
-IMAGES_FOLDER = os.path.join('.images') # images for visuals
+dir = os.getcwd()
+IMAGES_FOLDER = os.path.join(dir, 'images') # images for visuals
 
 MODEL_PATH = os.path.join('model')
 MODEL_FILE = os.path.join(MODEL_PATH, 'hand_model_gray.hdf5') # path to model weights and architechture file
@@ -53,7 +54,8 @@ def plot_image(image, figsize=(8, 8), recolour=False):
 
 def screenshot():
         fname = input("File name : ")
-        cv2.imwrite(os.path.join(IMAGES_FOLDER, '{}.jpg'.format(fname)), frame)
+        cv2.imwrite(os.path.join(IMAGES_FOLDER, f'{fname}.jpg'), frame)
+        print(f"Screenshot saved in {IMAGES_FOLDER}")
 
 def print_key(k):
     if k != 255:
